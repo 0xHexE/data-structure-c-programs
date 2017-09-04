@@ -103,11 +103,9 @@ int quickSortPart(int *array, int low, int high) {
         do {
             i++;
         } while(array[i] < v && i <= high);
-
         do {
             j--;
         } while(v < array[j]);
-
         if(i < j) {
             swapNumber(&array[i], &array[j]);
         }
