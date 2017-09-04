@@ -3,5 +3,5 @@ project(college)
 
 set(CMAKE_C_STANDARD 99)
 
-set(SOURCE_FILES set_program.c)
+set(SOURCE_FILES main.c common.c)
 add_executable(college ${SOURCE_FILES})

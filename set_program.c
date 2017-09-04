@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void getArray(int *, int , char *);
 void unionArray(int *, int , int *, int , int *);
-void printArray(int *, int );
 void intersectArray(int *, int , int *, int , int *);
 void subtractArray(int *, int ,  int *, int , int *);
 
-void fillArray(int *resultArray, int start, int end);
+void fillArray(int *, int , int );
+void printArraySet(int *array, int sizeOfArray);
+void getArraySet(int *, int, char *);
 
-void main() {
+void setProgram() {
     int array1[5], array2[5], resultArray[10], choice;
     while (1) {
-        getArray(array1, 5, "Array 1");
-        getArray(array2, 5, "Array 2");
+        getArraySet(array1, 5, "Array 1");
+        getArraySet(array2, 5, "Array 2");
         printf("Menu\n"
                "\t\t1.Union All\n"
                "\t\t2.Intersect\n"
@@ -24,11 +24,11 @@ void main() {
         switch (choice) {
             case 1:
                 unionArray(array1, 5, array2, 5, resultArray);
-                printArray(resultArray, 10);
+                printArraySet(resultArray, 10);
                 break;
             case 2:
                 intersectArray(array1, 5, array2, 5, resultArray);
-                printArray(resultArray, 10);
+                printArraySet(resultArray, 10);
                 break;
             case 3:
                 printf("\n\t\t1.A-B"
@@ -37,11 +37,11 @@ void main() {
                 switch (choice) {
                     case 1:
                         subtractArray(array1, 5, array2, 5, resultArray);
-                        printArray(resultArray, 10);
+                        printArraySet(resultArray, 10);
                         break;
                     case 2:
                         subtractArray(array2, 5, array1, 5, resultArray);
-                        printArray(resultArray, 10);
+                        printArraySet(resultArray, 10);
                         break;
                     default:
                         printf("Invalid choice");
@@ -58,7 +58,7 @@ void main() {
 /*
  * It get array
  */
-void getArray(int *array, int number, char *string) {
+void getArraySet(int *array, int number, char *string) {
     int i;
     for (i = 0; i < number; i++) {
         printf("Enter %s at %d: ", string, i);
@@ -66,7 +66,7 @@ void getArray(int *array, int number, char *string) {
     }
 }
 
-void printArray(int *array, int sizeOfArray) {
+void printArraySet(int *array, int sizeOfArray) {
     for (int i = 0; i < sizeOfArray; ++i) {
         if (i == 0)
             printf("{");
