@@ -42,6 +42,8 @@ void sortMethod () {
             insertionSort(array, 5);
             printArraySort(array, 5);
             break;
+        case 5:
+            return;
         default:
             printf("Invalid choice");
     }
