@@ -6,13 +6,15 @@
 
 #include "set_program.c"
 #include "sort_methods.c"
+#include "search.c"
 
 int main() {
     int choice;
     printf("Menu"
            "\n1.SET Operations"
            "\n2.Sort"
-           "\n3.Exit"
+           "\n3.Search"
+           "\n4.Exit"
            "\nEnter your choice: ");
     scanf("%d", &choice);
     switch (choice) {
@@ -23,6 +25,9 @@ int main() {
             sortMethod();
             break;
         case 3:
+            searchProgram();
+            break;
+        case 4:
             printf("Thank You!");
             exit(0);
         default:

@@ -86,7 +86,7 @@ void unionArray(int *array1, int array1Size, int *array2, int array2Size, int *r
     }
     temp = array1Size;
     for (i = 0; i < array2Size; i++) {
-        for (j = 0; j < 5; j++) {
+        for (j = 0; j < array1Size; j++) {
             if (array2[i] == array1[j]) {
                 break;
             }
