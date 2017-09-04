@@ -67,13 +67,11 @@ void getArraySet(int *array, int number, char *string) {
 }
 
 void printArraySet(int *array, int sizeOfArray) {
+    printf("{");
     for (int i = 0; i < sizeOfArray; ++i) {
-        if (i == 0)
-            printf("{");
         printf(" %d,", array[i]);
-        if (i == sizeOfArray - 1)
-            printf("\b}\n");
     }
+    printf("\b}\n");
 }
 
 /*
