@@ -10,7 +10,7 @@ void quickSort(int *array, int arraySize, int low, int high);
 int quickSortPart(int *array, int low, int high);
 
 // Optional Deps
-void swap_number(int *number1, int *number2);
+void swapNumber(int *number1, int *number2);
 void getArraySort(int *array, int number, char *string);
 void printArraySort(int *array, int sizeOfArray);
 
@@ -107,7 +107,7 @@ int quickSortPart(int *array, int low, int high) {
     return (i + 1);
 }
 
-void swap_number(int *number1, int *number2) {
+void swapNumber(int *number1, int *number2) {
     int temp;
     temp = *number1;
     *number1 = *number2;
