@@ -54,7 +54,7 @@ void select_sort (int *array, int arraySize) {
     for (i = 0; i < arraySize; ++i) {
         for (j = i + 1; j < arraySize; ++j) {
             if (array[i] > array[j]) {
-                swap_number(&array[i], &array[j]);
+                swapNumber(&array[i], &array[j]);
             }
         }
     }
@@ -65,7 +65,7 @@ void bubble_sort(int *array, int arraySize) {
     for (i = 0; i < arraySize - 1; ++i) {
         for (j = 0; j < arraySize - i - 1; ++j) {
             if (array[j] > array[j + 1]) {
-                swap_number(&array[j], &array[j + 1]);
+                swapNumber(&array[j], &array[j + 1]);
             }
         }
     }
@@ -100,10 +100,10 @@ int quickSortPart(int *array, int low, int high) {
     for (j = low; j <= high- 1; j++) {
         if (array[j] <= pivot) {
             i++;
-            swap_number(&array[i], &array[j]);
+            swapNumber(&array[i], &array[j]);
         }
     }
-    swap_number(&array[i + 1], &array[high]);
+    swapNumber(&array[i + 1], &array[high]);
     return (i + 1);
 }
 
