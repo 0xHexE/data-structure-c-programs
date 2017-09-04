@@ -35,7 +35,7 @@ void sortMethod () {
             printArraySort(array, 5);
             break;
         case 3:
-            quickSort(array, 5, 0, 5);
+            quickSort(array, 5, 0, 5 - 1);
             printArraySort(array, 5);
             break;
         case 4:
@@ -95,16 +95,28 @@ void quickSort(int *array, int arraySize, int low, int high) {
 }
 
 int quickSortPart(int *array, int low, int high) {
-    int pivot = array[high], i, j;
-    i = (low - 1);  // Index of smaller element
-    for (j = low; j <= high- 1; j++) {
-        if (array[j] <= pivot) {
+    int v, i, j;
+    v = array[low];
+    i = low;
+    j = high + 1;
+    do {
+        do {
             i++;
+        } while(array[i] < v && i <= high);
+
+        do {
+            j--;
+        } while(v < array[j]);
+
+        if(i < j) {
             swapNumber(&array[i], &array[j]);
         }
-    }
-    swapNumber(&array[i + 1], &array[high]);
-    return (i + 1);
+    } while(i < j);
+
+    array[low] = array[j];
+    array[j] = v;
+
+    return j;
 }
 
 void swapNumber(int *number1, int *number2) {
