@@ -45,7 +45,6 @@ void link_list() {
                                 printf("Data not found");
                                 break;
                             }
-                            printf("%p", temp_list);
                             insert(&head, temp_list);
                             break;
                         case 3:
@@ -118,6 +117,7 @@ void insert(struct List **head, struct List *location) {
         traverse(*head, NULL, &temp2, 0);
         temp2 -> next = temp;
     } else if (location == *head) {
+        printf("\n%p - %p\n", location, head);
         temp2 = *head;
         *head = temp;
         (*head) -> next = temp2;
@@ -130,13 +130,15 @@ void insert(struct List **head, struct List *location) {
 }
 
 void delete_from_list(struct List **head, struct List **location) {
-    struct List *temp;
+    struct List *temp = NULL;
     if (*location == NULL) {
         temp = (*head) -> next;
         temp -> next = (*head) -> next;
         *head = temp;
     }
-    temp = (*location) -> next -> next;
+    if ((*location) -> next != NULL) {
+        temp = (*location) -> next -> next;
+    }
     free((*location) -> next);
     (*location) -> next = temp;
 }
@@ -166,7 +168,7 @@ void traverse(struct List *head, struct List *location, struct List **result, in
     struct List *temp = head, *temp2;
     while (temp != location) {
         if (printData == 1)
-            printf("data at %p is %d\n", temp, temp -> data);
+            printf("data at %p is %d and next is %p\n", temp, temp -> data, temp -> next);
         temp2 = temp;
         temp = temp -> next;
     }
