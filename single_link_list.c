@@ -19,13 +19,14 @@ void traverse(struct List *head, int data, struct List **result, struct List **p
 void search_in_link_list(struct List *head, struct List **result, struct List **priv);
 void update_node(struct List *node);
 void delete_node(struct List **current, struct List *priv);
+void reverse_list(struct List **head);
 
 void link_list() {
     int temp;
     struct List *head = NULL, *l_temp1, *l_temp2;
     printf("Program is developed by Omkar Yadav");
     while (1) {
-        printf("\nMenu\n1.Display\n2.Insert\n3.Search\n4.Update\n5.Delete\nEnter your choice: ");
+        printf("\nMenu\n1.Display\n2.Insert\n3.Search\n4.Update\n5.Delete\n6.Reverse\nEnter your choice: ");
         scanf("%d", &temp);
         l_temp1 = NULL;
         l_temp2 = NULL;
@@ -70,6 +71,10 @@ void link_list() {
             case 5:
                 search_in_link_list(head, &l_temp1, &l_temp2);
                 delete_node(&l_temp1, l_temp2);
+                break;
+            case 6:
+                reverse_list(&head);
+                print_link_list(head);
         }
     }
 }
@@ -141,17 +146,25 @@ void update_node(struct List *node) {
 void delete_node(struct List **current, struct List *priv) {
     struct List *temp = *current;
 
-    print_node(temp);
-
     if (priv != NULL) {
-        print_node(priv);
         priv -> next = (*current) -> next;
     }
     else {
         *current = (*current) -> next;
-        print_node(*current);
     }
 
     free(temp);
     temp = NULL;
+}
+
+void reverse_list(struct List **head) {
+    struct List *temp, *m_temp = *head, *last = *head;
+    while (m_temp -> next != NULL) {
+        temp = m_temp -> next;
+        m_temp -> next = temp -> next;
+        temp -> next = m_temp -> next;
+
+        m_temp = temp -> next;
+    }
+    *head = last;
 }
