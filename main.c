@@ -6,7 +6,8 @@
 
 #include "set_program.c"
 #include "sort_methods.c"
-#include "search.c"
+#include "search_program.c"
+#include "single_link_list.c"
 
 int main() {
     int choice;
@@ -14,7 +15,7 @@ int main() {
            "\n1.SET Operations"
            "\n2.Sort"
            "\n3.Search"
-           "\n4.Exit"
+           "\n4.Link List"
            "\nEnter your choice: ");
     scanf("%d", &choice);
     switch (choice) {
@@ -28,10 +29,10 @@ int main() {
             searchProgram();
             break;
         case 4:
+            link_list();
+        default:
             printf("Thank You!");
             exit(0);
-        default:
-            printf("Enter valid option");
     }
     return 1;
 }

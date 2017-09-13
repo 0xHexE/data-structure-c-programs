@@ -12,17 +12,20 @@ struct List {
     struct List *next;
 };
 
+void print_node(struct List *location);
 void print_link_list(struct List *head);
 void insert_at_link(struct List **location, struct List *priv, int end);
 void traverse(struct List *head, int data, struct List **result, struct List **priv);
 void search_in_link_list(struct List *head, struct List **result, struct List **priv);
+void update_node(struct List *node);
+void delete_node(struct List **current, struct List *priv);
 
 void link_list() {
     int temp;
     struct List *head = NULL, *l_temp1, *l_temp2;
     printf("Program is developed by Omkar Yadav");
     while (1) {
-        printf("\nMenu\n1.Display\n2.Insert\nEnter your choice: ");
+        printf("\nMenu\n1.Display\n2.Insert\n3.Search\n4.Update\n5.Delete\nEnter your choice: ");
         scanf("%d", &temp);
         l_temp1 = NULL;
         l_temp2 = NULL;
@@ -53,15 +56,33 @@ void link_list() {
                     }
                 }
                 break;
+            case 3:
+                search_in_link_list(head, &l_temp1, &l_temp2);
+                if (&l_temp1 != NULL)
+                    print_node(l_temp1);
+                else
+                    printf("Data not found");
+                break;
+            case 4:
+                search_in_link_list(head, &l_temp1, &l_temp2);
+                update_node(l_temp1);
+                break;
+            case 5:
+                search_in_link_list(head, &l_temp1, &l_temp2);
+                delete_node(&l_temp1, l_temp2);
         }
     }
 }
 
 void print_link_list(struct List *head) {
     while (head != NULL) {
-        printf("Data at %p is %d and next is %p\n", head, head -> data, head -> next);
+        print_node(head);
         head = head -> next;
     }
+}
+
+void print_node(struct List *location) {
+    printf("Data at %p is %d and next is %p\n", location, location -> data, location -> next);
 }
 
 void insert_at_link(struct List **location, struct List *priv, int end) {
@@ -82,8 +103,10 @@ void insert_at_link(struct List **location, struct List *priv, int end) {
     }
 
     if (priv == NULL) {
+        temp -> next = *location;
         *location = temp;
     } else {
+        temp -> next = priv -> next;
         priv -> next = temp;
     }
 }
@@ -106,4 +129,29 @@ void search_in_link_list(struct List *head, struct List **result, struct List **
     printf("Enter the data: ");
     scanf("%d", &temp);
     traverse(head, temp,result, priv);
+}
+
+void update_node(struct List *node) {
+    int temp;
+    printf("Enter the data: ");
+    scanf("%d", &temp);
+    node -> data = temp;
+}
+
+void delete_node(struct List **current, struct List *priv) {
+    struct List *temp = *current;
+
+    print_node(temp);
+
+    if (priv != NULL) {
+        print_node(priv);
+        priv -> next = (*current) -> next;
+    }
+    else {
+        *current = (*current) -> next;
+        print_node(*current);
+    }
+
+    free(temp);
+    temp = NULL;
 }
