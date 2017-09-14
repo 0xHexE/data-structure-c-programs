@@ -18,7 +18,7 @@ int getFromArray(int *matrix1, int i, int j, int sz);
 
 void matrix_with_pointer() {
     int *matrix1, *matrix2, temp, matrix_1_row, matrix_1_col, matrix_2_row, matrix_2_col, *result;
-    printf("Devloped by Omkar Yadav IT-1@83\n");
+    printf("Developed by Omkar Yadav IT-1@83\n");
     while(1) {
         printf("\nMenu\n1.Get Matrix\n2.Print Matrix\n3.Add Matrix\n4.Multiply matrix\n5.Transpose\nEnter your choice: ");
         scanf("%d", &temp);
