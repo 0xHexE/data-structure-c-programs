@@ -8,6 +8,9 @@
 #include "sort_methods.c"
 #include "search_program.c"
 #include "single_link_list.c"
+#include "matrix_with_pointer.c"
+#include "string_operation_without_lib.c"
+#include "structure.c"
 
 int main() {
     int choice;
@@ -16,6 +19,9 @@ int main() {
            "\n2.Sort"
            "\n3.Search"
            "\n4.Link List"
+           "\n5.Matrix"
+           "\n6.String"
+           "\n7.Structure"
            "\nEnter your choice: ");
     scanf("%d", &choice);
     switch (choice) {
@@ -30,6 +36,16 @@ int main() {
             break;
         case 4:
             link_list();
+            break;
+        case 5:
+            matrix_with_pointer();
+            break;
+        case 6:
+            string_operation_without_lib();
+            break;
+        case 7:
+            structure();
+            break;
         default:
             printf("Thank You!");
             exit(0);
