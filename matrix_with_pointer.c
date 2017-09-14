@@ -13,7 +13,6 @@ void put_matrix(int *, int , int );
 void add_matrix(int *, int, int, int *, int, int);
 void transpose(int *, int , int);
 void mult_matrix(int *, int , int , int *, int , int );
-/*void swap(int *, int *);*/
 int getFromArray(int *matrix1, int i, int j, int sz);
 
 void matrix_with_pointer() {
