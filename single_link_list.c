@@ -158,13 +158,12 @@ void delete_node(struct List **current, struct List *priv) {
 }
 
 void reverse_list(struct List **head) {
-    struct List *temp, *m_temp = *head, *last = *head;
-    while (m_temp -> next != NULL) {
-        temp = m_temp -> next;
-        m_temp -> next = temp -> next;
-        temp -> next = m_temp -> next;
-
-        m_temp = temp -> next;
+    struct List *previous_node = NULL, *current_node = *head, *next_node;
+    while (current_node != NULL) {
+        next_node = current_node -> next;
+        current_node -> next = previous_node;
+        previous_node = current_node;
+        current_node = next_node;
     }
-    *head = last;
+    *head = previous_node;
 }
