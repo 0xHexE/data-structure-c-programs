@@ -11,6 +11,7 @@
 #include "matrix_with_pointer.c"
 #include "string_operation_without_lib.c"
 #include "structure.c"
+#include "file_operation.c"
 
 int main() {
     int choice;
@@ -22,6 +23,7 @@ int main() {
            "\n5.Matrix"
            "\n6.String"
            "\n7.Structure"
+           "\n8.File Handling"
            "\nEnter your choice: ");
     scanf("%d", &choice);
     switch (choice) {
@@ -46,6 +48,8 @@ int main() {
         case 7:
             structure();
             break;
+        case 8:
+            file_operation();
         default:
             printf("Thank You!");
             exit(0);
