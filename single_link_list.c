@@ -20,13 +20,23 @@ void search_in_link_list(struct List *head, struct List **result, struct List **
 void update_node(struct List *node);
 void delete_node(struct List **current, struct List *priv);
 void reverse_list(struct List **head);
+void reverse_print_list(struct List *head);
+int get_link_size(struct List *node);
 
 void link_list() {
     int temp;
     struct List *head = NULL, *l_temp1, *l_temp2;
     printf("Program is developed by Omkar Yadav");
     while (1) {
-        printf("\nMenu\n1.Display\n2.Insert\n3.Search\n4.Update\n5.Delete\n6.Reverse\nEnter your choice: ");
+        printf("\nMenu"
+               "\n1.Display"
+               "\n2.Insert"
+               "\n3.Search"
+               "\n4.Update"
+               "\n5.Delete"
+               "\n6.Reverse"
+               "\n7.Print Reverse"
+               "\nEnter your choice: ");
         scanf("%d", &temp);
         l_temp1 = NULL;
         l_temp2 = NULL;
@@ -46,7 +56,10 @@ void link_list() {
                             break;
                         case 2:
                             search_in_link_list(head, &l_temp1, &l_temp2);
-                            insert_at_link(&l_temp1, l_temp2, FALSE);
+                            if (l_temp1 != head)
+                                insert_at_link(&l_temp1, l_temp2, FALSE);
+                            else
+                                insert_at_link(&head, NULL, FALSE);
                             break;
                         case 3:
                             l_temp1 = head;
@@ -59,7 +72,7 @@ void link_list() {
                 break;
             case 3:
                 search_in_link_list(head, &l_temp1, &l_temp2);
-                if (&l_temp1 != NULL)
+                if (l_temp1 != NULL)
                     print_node(l_temp1);
                 else
                     printf("Data not found");
@@ -75,6 +88,10 @@ void link_list() {
             case 6:
                 reverse_list(&head);
                 print_link_list(head);
+                break;
+            case 7:
+                reverse_print_list(head);
+                break;
         }
     }
 }
@@ -94,8 +111,8 @@ void insert_at_link(struct List **location, struct List *priv, int end) {
     struct List *temp, *temp2 = *location, *temp3;
     temp = (struct List *) malloc(sizeof(struct List));
 
-    printf("Enter data: ");
-    scanf("%d", &(temp -> data));
+    update_node(temp);
+
     temp -> next = NULL;
 
     if (end == TRUE) {
@@ -158,7 +175,7 @@ void delete_node(struct List **current, struct List *priv) {
 }
 
 void reverse_list(struct List **head) {
-    struct List *previous_node = NULL, *current_node = *head, *next_node;
+    struct List *previous_node = NULL, *current_node = *head, *next_node = NULL;
     while (current_node != NULL) {
         next_node = current_node -> next;
         current_node -> next = previous_node;
@@ -166,4 +183,21 @@ void reverse_list(struct List **head) {
         current_node = next_node;
     }
     *head = previous_node;
+}
+
+void reverse_print_list(struct List *head) {
+    int array[get_link_size(head) + 1], i = 0;
+    while (head != NULL) {
+        array[i++] = head -> data;
+        head = head -> next;
+    }
+}
+
+int get_link_size(struct List *node) {
+    int length = 0;
+    while (node != NULL) {
+        node = node -> next;
+        length++;
+    }
+    return length;
 }
