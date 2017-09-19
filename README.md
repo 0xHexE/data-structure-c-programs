@@ -10,6 +10,11 @@
 9. [Structure of Student](structure.c)
 10. [Circular Link list](circular_link_list.c)
 
+#### Installation guide
+
+To run all the programs you need the cmake installed on your computer.
+To build run command `cmake . --build` it will generate the file in the `cmake-build-debug` folder in that folder you will find `college` file which is executable.
+
 > All the Programs are under GNU/GPL Licence.
 
 > Note: The function are duplicated because it requires in one page or in one print so Im duplicating the functions.
