@@ -8,7 +8,6 @@
 7. [Sorting in C](sort_methods.c)
 8. [String operation with library function](string_operation_without_lib.c)
 9. [Structure of Student](structure.c)
-<<<<<<< HEAD
 
 > All the Programs are under GNU/GPL Licence.
 
